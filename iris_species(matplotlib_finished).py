@@ -1,5 +1,5 @@
 #%% [markdown]
-# # Santander Data Science Frameworks
+# # Iris Data Species
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
@@ -20,10 +20,9 @@ import time
 import glob
 import sys
 import os
-
 import gc
 
-#%% [markdown] [markdown]
+#%% [markdown]
 # # 
 iris=pd.read_csv('/home/rahul/Desktop/Link to rahul_environment/Projects/Machine_Learning Projects/Iris_Species/Iris.csv')
 
@@ -40,6 +39,7 @@ iris['Species'].value_counts()
 sns.countplot('Species',data=iris)
 
 #%% [markdown]
+# ## Counting the values in the pie plot
 iris['Species'].value_counts().plot.pie(figsize=(10,8))
 
 #%% [markdown]
@@ -50,6 +50,7 @@ figure=sns.jointplot(x='SepalLengthCm',y='SepalWidthCm',data=iris)
 sns.jointplot(x='SepalWidthCm',y='SepalLengthCm',data=iris,kind='reg')
 
 #%% [markdown]
+# ## Jointplot's for the Sepal Length and Width
 sns.jointplot(x='SepalWidthCm',y='SepalLengthCm',data=iris,kind='hex')
 
 #%% [markdown]
@@ -59,18 +60,22 @@ sns.jointplot(x='SepalWidthCm',y='SepalLengthCm',data=iris,kind='resid')
 sns.jointplot(x='SepalWidthCm',y='SepalLengthCm',data=iris,kind='kde')
 
 #%% [markdown]
+# ## Boxplot for the Species and PetalLengthCm
 sns.boxplot(x='Species',y='PetalLengthCm',data=iris)
 plt.xlabel('Species of the plant')
 plt.title('Box Plot Of Figure')
 #%% [markdown]
+# ## Strip_plot
 sns.stripplot(x='Species',y='PetalLengthCm',data=iris)
 
 #%% [markdown]
+# ## Combining both the boxplot and strip_plot
 fig=plt.gcf()
 fig=sns.boxplot(x='Species',y='SepalLengthCm',data=iris)
 fig=sns.stripplot(x='Species',y='SepalLengthCm',data=iris)
 
 #%% [markdown]
+# ## Four different kinds of the violin_plots  
 plt.subplot(2,2,1)
 sns.violinplot(x='Species',y='PetalLengthCm',data=iris)
 plt.subplot(2,2,2)
@@ -81,24 +86,28 @@ plt.subplot(2,2,4)
 sns.violinplot(x='Species',y='SepalWidthCm',data=iris)
 
 #%% [markdown]
+# ## Scattterplot
 sns.scatterplot(x='Species',y='PetalLengthCm',data=iris)
 
 #%% [markdown]
+# ## Pairplot for the iris dataset.
 sns.pairplot(data=iris,hue='Species')
 
 #%% [markdown]
+# ## Heatmap for the iris dataset.
 sns.heatmap(data=iris.corr(),annot=True)
 
 #%% [markdown]
-# # Don't know how to plot the distribution plot??
+# ## Don't know how to plot the distribution plot??
 
 
 #%% [markdown]
-# # Swarm Plot
+# ## Swarm Plot
 sns.boxplot(x='Species',y='PetalLengthCm',data=iris)
 sns.swarmplot(x='Species',y='PetalLengthCm',data=iris)
 
 #%% [markdown]
+# ## Lmplot
 sns.lmplot(x="PetalLengthCm",y='PetalWidthCm',data=iris)
 
 #%% [markdown]
@@ -117,9 +126,11 @@ from pandas.tools.plotting import parallel_coordinates
 parallel_coordinates(iris,"Species",colormap="rainbow")
 
 #%% [markdown]
+# ## Factorplot
 sns.factorplot('Species','SepalLengthCm',data=iris)
 
 #%% [markdown]
+# ## Boxenplot
 sns.boxenplot('Species','SepalLengthCm',data=iris)
 
 #%% [markdown]
